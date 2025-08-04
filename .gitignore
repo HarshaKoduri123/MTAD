@@ -1,0 +1,35 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+
+# Virtual environment
+myenv/
+env/
+venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Data and weights
+Data/
+weights/
+
+# Logs and runtime files
+*.log
+*.tmp
+*.bak
+
+# PyTorch/TensorFlow checkpoints
+*.pth
+*.pt
+*.ckpt
+
+# VSCode settings (if applicable)
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
