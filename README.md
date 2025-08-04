@@ -32,6 +32,6 @@
     python train.py
 
    
-Note change the config file accordingly
+Note: change the config file accordingly
 
 Data and Weights - https://drive.google.com/drive/folders/1c8BHN7hJ6XccwPGSyKpqDrd_9Dxxc8o5
