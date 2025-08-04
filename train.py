@@ -12,7 +12,7 @@ from data import VesselSequenceDataset
 from utils import generate_vessel_sequences, normalize_sequences, compute_deltas
 
 from config import (
-    FILENAME, SAVE_DIR, SEQ_LENGTH, SEQ_LEN_MODEL, FEATURES, FEATURE_DIM,
+    DATA, SAVE_DIR, SEQ_LENGTH, SEQ_LEN_MODEL, FEATURES, FEATURE_DIM,
     D_MODEL, BATCH_SIZE, NUM_EPOCHS, LEARNING_RATE, CHECKPOINT_INTERVAL,
     MODALITY_INDICES, LOSS_WEIGHTS, get_logger
 )
@@ -92,21 +92,21 @@ def main():
 
 
     logger.info("Loading data...")
-    df = pd.read_csv(FILENAME)
+    data = pd.read_csv(DATA)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     logger.info(f"Using device: {device}")
 
     logger.info("Grouping Data...")
-    df['BaseDateTime'] = pd.to_datetime(df['BaseDateTime'])
-    df = df.sort_values(by=['MMSI', 'BaseDateTime']).reset_index(drop=True)
+    data['BaseDateTime'] = pd.to_datetime(data['BaseDateTime'])
+    data = data.sort_values(by=['MMSI', 'BaseDateTime']).reset_index(drop=True)
 
 
     logger.info("Computing Deltas...")
-    df = compute_deltas(df)
+    data = compute_deltas(data)
 
     logger.info("Generating sequences...")
-    sequences = generate_vessel_sequences(df, SEQ_LENGTH, FEATURES)
+    sequences = generate_vessel_sequences(data, SEQ_LENGTH, FEATURES)
     normalized_sequences, scaler = normalize_sequences(sequences)
 
 

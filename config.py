@@ -4,13 +4,15 @@ import os
 import logging
 
 # ======= File Paths =======
-FILENAME = r'C:\Users\remin\OneDrive\Documents\MTAD\Data\AIS_data_east_coast.csv'
+DATA = r'C:\Users\remin\OneDrive\Documents\MTAD\Data\AIS_data_east_coast.csv'
+VAL_DATA = r'C:\Users\remin\OneDrive\Documents\MTAD\Data\VAL_AIS_data_east_coast.csv'
+
 SAVE_DIR = r'C:\Users\remin\OneDrive\Documents\MTAD\weights'
 
 os.makedirs(SAVE_DIR, exist_ok=True)
 
 # ======= Sequence Settings =======
-SEQ_LENGTH = 1#50
+SEQ_LENGTH = 50
 SEQ_LEN_MODEL = 100  # for the transformer encoder
 
 # ======= Feature Settings =======
@@ -20,7 +22,7 @@ FEATURE_DIM = len(FEATURES)
 
 # ======= Model Settings =======
 D_MODEL = 64
-BATCH_SIZE = 3#2048
+BATCH_SIZE = 2048
 NUM_EPOCHS = 50
 LEARNING_RATE = 1e-4
 CHECKPOINT_INTERVAL = 10
